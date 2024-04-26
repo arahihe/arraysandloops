@@ -27,17 +27,62 @@ function secretName(arr){
 }
 console.log(secretName(namSec));
 
-//Online status
-function userStatus(user){
-    usersOnline = users.filter(user => ononline(user));
-    const usersOffline = users.length - usersOnline.length;
+//Online Status
+const emptyArray = [];
+const activeUsers = ['mockIng99', 'J0eyPunch', 'glassedFer'];
+
+onlineUsers = (listOfActiveUsers, numberOfUsersToPrint = 2) => {
+    if(listOfActiveUsers.length == 0){
+        return 'no users active.';
+    }
+    let activeUsersToDisplay = [];
+    
+    if(numberOfUsersToPrint > listOfActiveUsers.length){
+        numberOfUsersToPrint = listOfActiveUsers.length;
+    }
+    for (let index = 0; index < numberOfUsersToPrint; index++) {
+        activeUsersToDisplay.push(listOfActiveUsers[index]);
+    }
+    const stringOfActiveUsers = activeUsersToDisplay.join(',');
+    if(listOfActiveUsers.length > numberOfUsersToPrint){
+        return `${stringOfActiveUsers} and ${listOfActiveUsers.length - numberOfUsersToPrint} more online`; 
+    }
+    return stringOfActiveUsers;
 }
 
-let status = '';
+console.log(onlineUsers(activeUsers, 2));
 
-if (usersOnline.length === 0){
-    statusUser = 'No users online';
+//Array of Multiples
+function arrayMulti(number, length) {
+    const multipArray = []; 
+
+    for (let i = 1; i <= length; i++){
+        const multiple = number * i;
+        multipArray.push(multiple);
+    }
+    return multipArray;
 }
-else if (usersOnline.length === 1){
-    statusUser = 
+console.log(arrayMulti(17, 6));
+
+//Positive dominance
+function positiveDom(arr) {
+    let posCount = 0;
+    let negCount = 0;
+
+    arr.forEach(element => {
+        if (element > 0) {
+            posCount++;
+        }
+        else if (element < 0) {
+            negCount++;
+        }
+    });
+
+    if (posCount >= negCount){
+        return true;
+    }
+    else {
+        return false;
+    }
 }
+console.log(positiveDom([-1, -3, -5, 4, 6767]));
