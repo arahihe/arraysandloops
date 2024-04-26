@@ -86,3 +86,25 @@ function positiveDom(arr) {
     }
 }
 console.log(positiveDom([-1, -3, -5, 4, 6767]));
+
+//Antipodal Average
+function shortArray(arr) {
+    const length = arr.length;
+    const halfLength = Math.floor(length / 2);
+
+    if (length % 2 !== 0) {
+        arr.splice(halfLength, 1);
+    }
+
+    const resArray = [];
+
+    for (let i = 0; i < halfLength; i++) {
+        const sum = arr[i] + arr[length - 1 -i];
+        resArray.push(sum);
+    }
+    const finArray = resArray.map(num => num / 2);
+
+    return finArray;
+}
+
+console.log(shortArray([1, 2, 3, 5, 22, 6]));
